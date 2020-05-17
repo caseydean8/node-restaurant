@@ -8,9 +8,30 @@
 </head>
 
 <body>
-  <h1>Current Reservations</h1>
+  <h1>Make a Reservation</h1>
   <a href="/tables"><button>view tables</button></a>
   <a href="/"><button>home</button></a>
+  <form>
+    <input>
+    <input>
+    <input>
+    <button id="post-data">Submit</button>
+  </form>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript">
+    $("#post-data").on("click", function (e) {
+      e.preventDefault();
+      const newCust = {
+        name: document.getElementsByTagName("input")[0].value,
+        email: document.getElementsByTagName("input")[1].value,
+        phone: document.getElementsByTagName("input")[2].value,
+      };
+      $.post("/api/customers", newCust)
+        .then(function (data) {
+          console.log(data);
+        })
+    });
+  </script>
 </body>
 
 </html>

@@ -39,7 +39,14 @@ const customers = [
     email: "fart@yourface.com",
     phone: "555-5555"
   }
-]
+];
+
+app.post("/api/customers", (req, res) => {
+  const newCust = req.body;
+  console.log(newCust);
+  customers.push(newCust);
+  res.json(newCust);
+})
 
 // Start server
 app.listen(port, () => console.log(`serving to port ${port}`));

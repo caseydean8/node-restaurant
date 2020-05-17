@@ -16,21 +16,20 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script type="text/javascript">
     $.get("/api/customers/", data => {
-      console.log(data);
-        let num = 0;
+      console.log("retrieving data...", data);
+      let num = 0;
       data.forEach(customer => {
         console.log(customer);
         num++;
-        const custList = $("<ul>").text(`customer ${num}`);
+        const custList = $("<ul>").html(`customer ${num}<br>
+          =================`);
         const name = $("<li>").attr({ class: "name" });
         const email = $("<li>").attr({ class: "email" });
         const phone = $("<li>").attr({ class: "phone" });
         $(name).text(customer.name);
-        $(custList).append(name);
         $(email).text(customer.email);
-        $(custList).append(email);
         $(phone).text(customer.phone);
-        $(custList).append(phone);
+        $(custList).append(name, email, phone);
         $("#tables").append(custList);
       })
     })
