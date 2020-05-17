@@ -7,7 +7,7 @@ const port = 8080;
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
-// Routes
+// Page Routes
 let page = "/";
 // page = req.url;
 app.get(page, (req, res) => {
@@ -22,7 +22,19 @@ app.get("/reserve", (req, res) => {
   res.sendFile(path.join(__dirname, "reserve.html"));
 })
 
+// Customer route to display on tables page
+app.get("/api/customers", (req, res) => {
+  return res.json(customers);
+})
 
+// customer array
+const customers = [
+  {
+    name: "Joe Cool", 
+    email: "joe@cool.dude",
+    phone: "555-5555"
+  }
+]
 
 // Start server
 app.listen(port, () => console.log(`serving to port ${port}`));

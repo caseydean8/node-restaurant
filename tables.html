@@ -9,6 +9,11 @@
   <h1>Waiting List</h1>
   <a href="/reserve"><button>make reservation</button></a>
   <a href="/"><button>home</button></a>
-  
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript">
+  $.get("/api/customers/", data => {
+    console.log(data);
+  })
+  </script>
 </body>
 </html>
