@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tables</title>
 </head>
+
 <body>
   <h1>Waiting List</h1>
   <a href="/reserve"><button>make reservation</button></a>
   <a href="/"><button>home</button></a>
+  <div id="tables"></div>
+
   <script src="https://code.jquery.com/jquery.js"></script>
   <script type="text/javascript">
-  $.get("/api/customers/", data => {
-    console.log(data);
-  })
+    $.get("/api/customers/", data => {
+      console.log(data);
+        let num = 0;
+      data.forEach(customer => {
+        console.log(customer);
+        num++;
+        const custList = $("<ul>").text(`customer ${num}`);
+        const name = $("<li>").attr({ class: "name" });
+        const email = $("<li>").attr({ class: "email" });
+        const phone = $("<li>").attr({ class: "phone" });
+        $(name).text(customer.name);
+        $(custList).append(name);
+        $(email).text(customer.email);
+        $(custList).append(email);
+        $(phone).text(customer.phone);
+        $(custList).append(phone);
+        $("#tables").append(custList);
+      })
+    })
   </script>
 </body>
+
 </html>

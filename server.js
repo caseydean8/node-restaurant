@@ -33,6 +33,11 @@ const customers = [
     name: "Joe Cool", 
     email: "joe@cool.dude",
     phone: "555-5555"
+  }, 
+  {
+    name: "Mr Fartstein",
+    email: "fart@yourface.com",
+    phone: "555-5555"
   }
 ]
 
